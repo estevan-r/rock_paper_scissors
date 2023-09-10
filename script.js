@@ -15,20 +15,25 @@ function getComputerChoice() {
 const playerSelection = "Rock";
 const computerSelection = getComputerChoice();
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === "Rock" && computerSelection === "Scissors") {
+function playRound(user, computer) {
+    if (user === "Rock" && computer === "Scissors") {
         return "You Win! Rock beats Scissors";
-    } else if (computerSelection === "Rock" && playerSelection === "Scissors") {
+    } else if (computer === "Rock" && user === "Scissors") {
         return "You Lose! Rock beats Scissors"
-    } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+    } else if (user === "Paper" && computer === "Rock") {
         return "Youn Win! Paper beats Rock";
-    } else if (computerSelection === "Paper" && playerSelection === "Rock") {
+    } else if (computer === "Paper" && user === "Rock") {
         return "You Lose! Paper beats Rock";
-    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+    } else if (user === "Scissors" && computer === "Paper") {
         return "You Win! Scissors beat paper";
-    } else if (computerSelection === "Scissors" && playerSelection === "Paper") {
+    } else if (computer === "Scissors" && user === "Paper") {
         return "You Lose! Scissors beat paper";
     } else {
         return "It's a Draw! Play again";
     }
 }
+
+const playGame = playRound(playerSelection, computerSelection);
+
+console.log(computerSelection);
+console.log(playGame);
