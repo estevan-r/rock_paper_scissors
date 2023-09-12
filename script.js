@@ -7,33 +7,37 @@ function getComputerChoice() {
         return "paper";
     } else if (randomNum === 3) {
         return "scissors";
-    } else {
-        return "Not Working";
     }
 }
+
+function playRound(user, computer) {
+    const winStatement = `You Win! ${user} beats ${computer}`;
+    
+    if (user.toLowerCase() === computer) {
+        return "It's a Draw!";
+    } else if (user.toLowerCase() === "rock" && computer === "scissors") {
+        userScore += 1;
+        return winStatement;
+    } else if (user.toLowerCase() === "paper" && computer === "rock") {
+        userScore += 1;
+        return winStatement;
+    } else if (user.toLowerCase() === "scissors" && computer === "paper") {
+        userScore += 1;
+        return winStatement;
+    } else {
+        computerScore += 1;
+        return `You Lose! ${computer} beats ${user}`;
+    }
+}
+
+let userScore = 0;
+let computerScore = 0;
 
 const playerSelection = "Rock";
 const computerSelection = getComputerChoice();
-
-function playRound(user, computer) {
-    if (user.toLowerCase() === "rock" && computer === "scissors") {
-        return "You Win! Rock beats Scissors";
-    } else if (computer === "rock" && user.toLowerCase() === "scissors") {
-        return "You Lose! Rock beats Scissors"
-    } else if (user.toLowerCase() === "paper" && computer === "rock") {
-        return "Youn Win! Paper beats Rock";
-    } else if (computer === "paper" && user.toLowerCase() === "rock") {
-        return "You Lose! Paper beats Rock";
-    } else if (user.toLowerCase() === "scissors" && computer === "paper") {
-        return "You Win! Scissors beat paper";
-    } else if (computer === "scissors" && user.toLowerCase() === "paper") {
-        return "You Lose! Scissors beat paper";
-    } else {
-        return "It's a Draw! Play again";
-    }
-}
-
 const playGame = playRound(playerSelection, computerSelection);
 
-console.log(computerSelection);
+console.log(computerSelection, computerScore, userScore);
 console.log(playGame);
+
+//for (let i = 0; i < 5; i++) {}
