@@ -1,3 +1,6 @@
+let userScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3)+1;
 
@@ -12,7 +15,7 @@ function getComputerChoice() {
 
 function playRound(user, computer) {
     const winStatement = `You Win! ${user} beats ${computer}`;
-    
+
     if (user.toLowerCase() === computer) {
         return "It's a Draw!";
     } else if (user.toLowerCase() === "rock" && computer === "scissors") {
@@ -30,14 +33,27 @@ function playRound(user, computer) {
     }
 }
 
-let userScore = 0;
-let computerScore = 0;
+function game() {
+    while (userScore < 5 && computerScore < 5) {
+        const playerSelection = prompt("Choose Rock, Paper or Scissors");
+        const computerSelection = getComputerChoice();
+        alert(playRound(playerSelection, computerSelection));
+    }
+}
 
-const playerSelection = "Rock";
-const computerSelection = getComputerChoice();
-const playGame = playRound(playerSelection, computerSelection);
+function gameWinner() {
+    if (userScore > computerScore) {
+        alert(`You Won the match!
+User: ${userScore} - Computer: ${computerScore}
 
-console.log(computerSelection, computerScore, userScore);
-console.log(playGame);
+Refresh page to play again`);
+    } else if (computerScore > userScore) {
+        alert(`You Lost the match!
+User: ${userScore} - Computer: ${computerScore}
 
-//for (let i = 0; i < 5; i++) {}
+Refresh page to play again`);
+    }
+}
+
+game();
+gameWinner();
