@@ -1,7 +1,7 @@
 let userScore = 0;
 let computerScore = 0;
 
-function getComputerChoice() {
+const computerSelection = function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3)+1;
 
     if (randomNum === 1) {
@@ -10,6 +10,21 @@ function getComputerChoice() {
         return "paper";
     } else if (randomNum === 3) {
         return "scissors";
+    }
+}
+
+
+const playerSelection = function select(btn) {
+    const rock = document.querySelector('#rock');
+    const paper = document.querySelector('#paper');
+    const scissors = document.querySelector('#scissors');
+
+    if (btn === rock) {
+        return rock;
+    } else if (btn === paper) {
+        return paper;
+    } else if (btn === scissors) {
+        return scissors;
     }
 }
 
@@ -33,13 +48,13 @@ function playRound(user, computer) {
     }
 }
 
-function game() {
+/*function game() {
     while (userScore < 5 && computerScore < 5) {
         const playerSelection = prompt("Choose Rock, Paper or Scissors");
         const computerSelection = getComputerChoice();
         alert(playRound(playerSelection, computerSelection));
     }
-}
+}*/
 
 function gameWinner() {
     if (userScore > computerScore) {
@@ -55,5 +70,11 @@ Refresh page to play again`);
     }
 }
 
-game();
+//game();
 gameWinner();
+
+const btn = document.querySelectorAll('.btn');
+
+btn.addEvenListener('click', () => {
+    playRound();
+})
